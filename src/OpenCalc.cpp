@@ -1,16 +1,18 @@
 #include "OpenCalc.hpp"
 
-OpenCalcError oc::init() {
+std::expected<void, oc::Error> oc::startup() {
 	#ifdef SDL
 	
 	#endif
-	return OpenCalcError::InitFailed; 
+
+	return {}; 
 }
 
-OpenCalcError oc::exit() {
+std::expected<void, oc::Error> oc::cleanup() {
 	#ifdef SDL
 	
 	#endif
-	return OpenCalcError::ExitFailed;
+	
+	return {};
 }
 

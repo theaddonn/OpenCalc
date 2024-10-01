@@ -20,16 +20,16 @@ namespace oc {
 	#if defined SDL
 	const std::string GRAPHICS = "Sdl";
 	#elif defined CAS
-	const std::string GRAPHICS = "Calculator"
+	const std::string GRAPHICS = "Calculator";
 	#else	
 	#error Missing GRAPHICS
 	#endif
 	
 	enum class Error {
 		// TODO
-	}
+	};
 
-	std::expected<Error, void> startup();
-	std::expected<Error, void> cleanup();
+	std::expected<void, Error> startup();
+	std::expected<void, Error> cleanup();
 }
 

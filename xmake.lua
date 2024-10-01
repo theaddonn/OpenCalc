@@ -5,8 +5,9 @@ option("target-host")
 	set_values("linux-sdl", "windows-sdl", "hollyhock2", "gint", "ndless")
 
 target("OpenCalc")
-    	set_kind("static")
-    	add_headerfiles("src/*.h")
+	set_kind("static")
+    	set_languages("c++23")
+	add_headerfiles("src/*.h")
     	add_files("src/*.cpp")
 
 local target_host = get_config("target-host")

@@ -1,10 +1,15 @@
-#include <Fs.hpp>
+#include "Fs.hpp"
 
-std::excpected<OpenCalcFsError, std::vector<std::byte>> oc::fs::readFile(std::string& path) {
+std::expected<std::vector<std::byte>, oc::fs::Error> oc::fs::readFile(std::string& path) {
 	#if defined LINUX
 	
 	#elif defined WINDOWS
 
-	#endif	
+	#endif
+	return {};
+}
+
+std::expected<void, oc::fs::Error> oc::fs::writeFile(std::string& path, std::vector<std::byte>& data) {
+	return {};
 }
 

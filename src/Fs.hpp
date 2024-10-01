@@ -6,11 +6,11 @@
 namespace oc::fs {
 	enum class Error {
 		// TODO
-	}
+	};
 	
 	/// Reads a file from the specified path
-	std::expected<OpenCalcFsError, std::vector<std::byte>> readFile(std::string& path);
+	std::expected<std::vector<std::byte>, Error> readFile(std::string& path);
 	/// Writes data to the specified file at the specified path 
-	std::expected<OpenCalcFsError, void> writeFile(std::string& path, std::vector& data);
+	std::expected<void, Error> writeFile(std::string& path, std::vector<std::byte>& data);
 }
 
