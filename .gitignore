@@ -1,3 +1,7 @@
+# Swap files
+.*
+**/.*
+
 # Xmake cache
 .xmake/
 build/
