@@ -3,9 +3,11 @@
 #include <string>
 #include <vector>
 
-#include "Error.hpp"
-
 namespace oc::fs {
+	enum class Error {
+		// TODO
+	}
+	
 	/// Reads a file from the specified path
 	std::expected<OpenCalcFsError, std::vector<std::byte>> readFile(std::string& path);
 	/// Writes data to the specified file at the specified path 
