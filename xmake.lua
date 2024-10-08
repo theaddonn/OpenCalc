@@ -1,40 +1,33 @@
-add_rules("mode.debug", "mode.release")
+package("OpenCalc")
 
-target("OpenCalc")
-	set_kind("static")
-    	set_languages("c++23")
-	add_headerfiles("src/*.h")
-    	add_files("src/*.cpp")
+    set_kind("static")
+    set_languages("c++23")
+    
+    -- Add header and source files
+    add_headerfiles("src/*.h")
+    add_files("src/*.cpp")
 
-if is_plat("linux") then
-	-- defines
-	add_defines("LINUX")
-	add_defines("SDL")
-	-- deps
-	add_packages("libsdl")
-elseif is_plat("windows") then 
-	-- defines
-	add_defines("WINDOWS")
-	add_defines("SDL")
-	-- deps
-	add_packages("libsdl")
-elseif is_plat("hollyhock2") then 
-	-- defines
-	add_defines("HOLLYHOCK2")
-	add_defines("CAS")
-	-- deps
-	-- TODO
-elseif is_plat("gint") then 
-	-- defines
-	add_defines("GINT")
-	add_defines("CAS")
-	-- deps
-	-- TODO
-elseif is_plat("ndless") then
-	-- defines
-	add_defines("NDLESS")
-	add_defines("CAS")
-	-- deps
-	-- TODO
-end
+    -- Platform-specific settings
+    on_install(function (package)
+        if is_plat("linux") then
+            add_defines("LINUX", "SDL")
+            add_packages("libsdl")
+        elseif is_plat("windows") then
+            add_defines("WINDOWS", "SDL")
+            add_packages("libsdl")
+        elseif is_plat("hollyhock2") then
+            add_defines("HOLLYHOCK2", "CAS")
+        elseif is_plat("gint") then
+            add_defines("GINT", "CAS")
+        elseif is_plat("ndless") then
+            add_defines("NDLESS", "CAS")
+        end
+
+        -- Install the library and headers
+        os.cp("src/*.h", package:installdir("include"))
+        os.cp("libOpenCalc.a", package:installdir("lib"))
+    end)
+    
+    -- Specify package dependencies
+    add_deps("libsdl")
 
