@@ -1,10 +1,9 @@
 package("OpenCalc")
-
     set_kind("static")
     set_languages("c++23")
     
     -- Add header and source files
-    add_headerfiles("src/*.h")
+    add_headerfiles("src/*.hpp")
     add_files("src/*.cpp")
 
     -- Platform-specific settings
